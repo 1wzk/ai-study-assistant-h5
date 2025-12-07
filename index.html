@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>AI几何题解析助手（H5版）</title>
+  <!-- 强制加载样式 -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/three.js"></script>
+  <script src="js/OBJLoader.js"></script>
+</head>
+<body>
+  <!-- 加载遮罩 -->
+  <div id="loading-mask">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p>AI学习助手加载中...</p>
+    </div>
+  </div>
+
+  <!-- 相机拍摄页 -->
+  <div id="camera-page" class="page active">
+    <header>
+      <h1>AI几何题解析</h1>
+      <button id="history-btn" class="header-btn">历史记录</button>
+    </header>
+    <div class="camera-container">
+      <video id="camera-preview" autoplay playsinline></video>
+      <div class="camera-frame"></div>
+      <div id="recognize-tips" class="tips">请对准几何题，点击拍摄按钮</div>
+    </div>
+    <div class="btn-group">
+      <button id="capture-btn" class="main-btn">拍摄解析</button>
+      <button id="switch-camera-btn" class="sub-btn">切换摄像头</button>
+    </div>
+  </div>
+
+  <!-- 3D解析页 -->
+  <div id="3d-page" class="page">
+    <header>
+      <button id="back-btn" class="header-btn">返回</button>
+      <h1>3D几何解析</h1>
+      <button id="rotate-btn" class="header-btn">暂停旋转</button>
+      <button id="share-btn" class="header-btn">分享</button>
+    </header>
+    <div class="result-card">
+      <h3>识别题目：</h3>
+      <p id="problem-text">加载中...</p>
+    </div>
+    <div class="helper-line-bar" id="helper-line-bar">
+      <button class="helper-btn active" data-type="none">无辅助线</button>
+      <button class="helper-btn" data-type="height">显示高</button>
+      <button class="helper-btn" data-type="midline">显示中线</button>
+    </div>
+    <div id="3d-container" class="3d-container"></div>
+    <div class="scale-bar">
+      <button id="zoom-out-btn" class="scale-btn">-</button>
+      <span id="scale-text">缩放：100%</span>
+      <button id="zoom-in-btn" class="scale-btn">+</button>
+    </div>
+  </div>
+
+  <!-- 历史记录页 -->
+  <div id="history-page" class="page">
+    <header>
+      <button id="history-back-btn" class="header-btn">返回</button>
+      <h1>识别历史</h1>
+      <button id="clear-history-btn" class="header-btn danger">清空</button>
+    </header>
+    <div id="history-list" class="history-list">
+      <div class="empty-tips">暂无识别记录</div>
+    </div>
+  </div>
+
+  <script src="js/tesseract.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/history.js"></script>
+</body>
+</html>
